@@ -38,7 +38,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:backgroundTint="@color/white"
-                    android:text="Artists, songs, or podcasts"
+                    android:text="Songs and podcasts"
                     android:textAlignment="center"
                     android:textAllCaps="false"
                     android:textColor="@color/black"

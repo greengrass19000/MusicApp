@@ -39,8 +39,8 @@ public class Banner extends Fragment {
         callback.enqueue(new Callback<List<Introduction>>() {
             @Override
             public void onResponse(Call<List<Introduction>> call, Response<List<Introduction>> response) {
-//                ArrayList<Introduction> banners = (ArrayList<Introduction>) response.body();
-//                Log.d("hehe", banners.get(0).getSongName());
+                ArrayList<Introduction> banners = (ArrayList<Introduction>) response.body();
+//                Log.d("BBB", banners.get(0).getSongName());
             }
 
             @Override

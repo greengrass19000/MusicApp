@@ -9,13 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicapp.Adapter.ArtistsAdapter;
-import com.example.musicapp.Data.HomeArtists;
 import com.example.musicapp.*;
 import com.example.musicapp.Adapter.SongsAdapter;
 import com.example.musicapp.Data.HomeSongs;
-
-import java.util.Arrays;
 
 public class Home extends Fragment {
 
@@ -34,9 +30,7 @@ public class Home extends Fragment {
                 new HomeSongs(R.drawable.spotify_icon_green, "Lovely Day", "Bill Withers"),
         };
 
-
         topSongsRecycleView.setAdapter(new SongsAdapter(songs));
-
 
         topSongsRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
