@@ -35,7 +35,7 @@ public class Songs {
     }
 
     public ArrayList<Artists> getTopArtists(final AsyncHandler callback){
-        String url = "https://api.spotify.com/v1/me/top/artists";
+        String url = "https://dungnbn.000webhostapp.com/server/songbanner.php";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
             Gson gson = new Gson();
             JSONArray items = response.optJSONArray("items");
@@ -54,16 +54,7 @@ public class Songs {
 
         }, error -> getTopArtists(() -> {
 
-        })) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError{
-                Map<String, String> headers = new HashMap();
-                String token = sp.getString("token", "");
-                String auth = "Bearer " + token;
-                headers.put("Authorization", auth);
-                return headers;
-            }
-        };
+        }));
 
         q.add(jsonObjectRequest);
         return artists;

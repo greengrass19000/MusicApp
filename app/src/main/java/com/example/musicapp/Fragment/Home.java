@@ -25,7 +25,6 @@ public class Home extends Fragment {
         View view = inflater.inflate(R.layout.home_fragment, container, false);
 
         RecyclerView topSongsRecycleView = view.findViewById(R.id.topSongsRecycleView);
-        RecyclerView topSingersRecycleView = view.findViewById(R.id.topArtistsRecycleView);
 
         HomeSongs[] songs = {
                 new HomeSongs(R.drawable.spotify_icon_green, "So Far Away", "Avenged Sevenfold"),
@@ -35,21 +34,11 @@ public class Home extends Fragment {
                 new HomeSongs(R.drawable.spotify_icon_green, "Lovely Day", "Bill Withers"),
         };
 
-        HomeArtists[] singers = {
-                new HomeArtists(R.drawable.spotify_icon_green, "Rihanna"),
-                new HomeArtists(R.drawable.spotify_icon_green, "Yeika"),
-                new HomeArtists(R.drawable.spotify_icon_green, "Ice Cub"),
-                new HomeArtists(R.drawable.spotify_icon_green, "Avenged Sevenfold"),
-                new HomeArtists(R.drawable.spotify_icon_green, "Blump"),
-        };
-
 
         topSongsRecycleView.setAdapter(new SongsAdapter(songs));
 
-        topSingersRecycleView.setAdapter(new ArtistsAdapter(Arrays.asList(singers)));
 
         topSongsRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        topSingersRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         return view;
     }
