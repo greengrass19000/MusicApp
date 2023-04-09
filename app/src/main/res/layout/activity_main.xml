@@ -6,12 +6,31 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     >
+    
+    <ScrollView
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearlayout"
+            android:orientation="vertical">
+        <fragment
+            android:id="@+id/fragmentbanner"
+            android:name="com.example.musicapp.Fragment.Banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </fragment>
+        </LinearLayout>
+    </ScrollView>
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
-
+        android:layout_height="match_parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
