@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ImageView
+    android:scaleType="fitXY"
+    android:id="@+id/imageviewbackgroundbanner"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:contentDescription="TODO" />
+<View
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/activity_gradient"/>
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_alignBottom="@id/imageviewbackgroundbanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageviewbanner"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:padding="2dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:contentDescription="TODO" />
+
+    </RelativeLayout>
+</RelativeLayout>

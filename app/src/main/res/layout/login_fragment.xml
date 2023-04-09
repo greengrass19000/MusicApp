@@ -28,7 +28,7 @@
         android:layout_marginTop="100dp"
         android:background="@android:color/transparent"
         android:gravity="center"
-        android:text="Spotify ®"
+        android:text="   Music App ®"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20dp" />
@@ -42,7 +42,7 @@
         android:layout_marginTop="230dp"
         android:layout_marginEnd="34dp"
         android:gravity="center"
-        android:text="Welcome \n Sign up free music on your phone, tablet \n and computer."
+        android:text="Welcome \n Sign up free music on your phone."
         android:textColor="@color/white"
         android:textSize="13dp" />
 

@@ -88,31 +88,6 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="50dp"
             />
-        <com.google.android.material.button.MaterialButton
-                android:layout_width="150dp"
-                android:layout_height="55dp"
-                android:backgroundTint="@color/gray_strong"
-                android:text=" "
-                android:gravity="left|center"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="13dp"
-                android:layout_marginLeft="-315dp"
-                android:layout_marginTop="100dp"
-                />
-
-       <com.google.android.material.button.MaterialButton
-                android:layout_width="150dp"
-                android:layout_height="55dp"
-                android:backgroundTint="@color/gray_strong"
-                android:text="💙"
-                android:gravity="left|center"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="13dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="100dp"
-                />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -151,36 +126,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/topSongsTextView" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-                <TextView
-                    android:id="@+id/topArtistsTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Top Artists"
-                    android:textColor="@color/white"
-                    android:textSize="24dp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/topArtistsRecycleView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:tag="topArtists"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/topArtistsTextView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
