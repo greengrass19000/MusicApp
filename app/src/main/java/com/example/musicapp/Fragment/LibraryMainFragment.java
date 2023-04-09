@@ -20,7 +20,21 @@ public class LibraryMainFragment extends Fragment {
         view = inflater.inflate(R.layout.library_main, container, false);
 
         librarynav_view = view.findViewById(R.id.librarynav_view);
+        librarynav_view.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.topartist:
+                    fragment = new ArtistsFragment();
+                    break;
+                case R.id.playlist:
+                    fragment = new PlaylistsFragment();
+                    break;
 
+            }
+            getFragmentManager().beginTransaction().replace(R.id.fragmentContainer2, fragment).commit();
+            return true;
+        });
+
+        getFragmentManager().beginTransaction().replace(R.id.fragmentContainer2, new PlaylistsFragment()).commit();
 
         return view;
     }

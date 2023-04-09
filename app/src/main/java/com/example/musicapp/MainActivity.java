@@ -1,10 +1,10 @@
 package com.example.musicapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.musicapp.Fragment.Home;
@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -41,5 +42,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
     }
 }
