@@ -22,9 +22,6 @@ public class LibraryMainFragment extends Fragment {
         librarynav_view = view.findViewById(R.id.librarynav_view);
         librarynav_view.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.topartist:
-                    fragment = new ArtistsFragment();
-                    break;
                 case R.id.playlist:
                     fragment = new PlaylistsFragment();
                     break;

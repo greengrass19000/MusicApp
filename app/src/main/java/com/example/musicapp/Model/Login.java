@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.musicapp.Services.Authentication;
 import com.example.musicapp.R;
 
 public class Login extends AppCompatActivity {
@@ -18,7 +17,7 @@ public class Login extends AppCompatActivity {
 
     }
     public void onRequestTokenClicked(View view) {
-        Intent intent = new Intent(this, Authentication.class);
+        Intent intent = new Intent();
         startActivity(intent);
     }
 }

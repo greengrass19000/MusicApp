@@ -12,27 +12,11 @@ public class HomeSongs {
         this.songSinger = songSinger;
     }
 
-    public int getSongCover() {
-        return songCover;
-    }
-
-    public void setSongCover(int songCover) {
-        this.songCover = songCover;
-    }
-
     public String getSongName() {
         return songName;
     }
 
-    public void setSongName(String songName) {
-        this.songName = songName;
-    }
-
     public String getSongSinger() {
         return songSinger;
-    }
-
-    public void setSongSinger(String songSinger) {
-        this.songSinger = songSinger;
     }
 }
