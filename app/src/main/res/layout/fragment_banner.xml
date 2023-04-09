@@ -5,11 +5,18 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <ViewFlipper
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:id="@+id/indicatordefault"
+        android:id="@+id/viewpager"
         android:background="@color/colorPrimary">
-    </ViewFlipper>
+    </androidx.viewpager.widget.ViewPager>
+    <me.relex.circleindicator.CircleIndicator
+        android:layout_width="wrap_content"
+        android:layout_height="13dp"
+        android:id="@+id/indicatordefault"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true">
+    </me.relex.circleindicator.CircleIndicator>
 </RelativeLayout>
 </ScrollView>

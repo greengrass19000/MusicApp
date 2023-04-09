@@ -25,6 +25,33 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:contentDescription="TODO" />
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="sample name"
+            android:textSize="17sp"
+            android:id="@+id/textviewtitlebannersong"
+            android:layout_toRightOf="@id/imageviewbanner"
+            android:layout_alignTop="@id/imageviewbanner"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_toRightOf="@id/imageviewbanner"
+            android:layout_below="@id/textviewtitlebannersong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp">
+            <TextView
+                android:text="sample title"
+                android:maxLines="2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="40dp"
+                android:textColor="@color/white"
+                android:id="@+id/textviewcontent"
+                android:textSize="13sp" />
+        </RelativeLayout>
 
     </RelativeLayout>
 </RelativeLayout>
