@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.musicapp.Adapter.BannerAdapter;
-import com.example.musicapp.Data.Introduction;
+import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.R;
 import com.example.musicapp.Services.APIService;
 import com.example.musicapp.Services.Dataservice;

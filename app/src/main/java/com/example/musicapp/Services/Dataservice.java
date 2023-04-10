@@ -1,6 +1,6 @@
 package com.example.musicapp.Services;
 
-import com.example.musicapp.Data.Introduction;
+import com.example.musicapp.Model.Introduction;
 
 import java.util.List;
 

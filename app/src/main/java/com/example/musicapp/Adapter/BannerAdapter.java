@@ -1,18 +1,21 @@
 package com.example.musicapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.example.musicapp.Data.Introduction;
+import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.R;
+import com.example.musicapp.SongListActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -52,6 +55,15 @@ public class BannerAdapter extends PagerAdapter {
         title.setText(arrayListbanner.get(position).getSongName());
         content.setText(arrayListbanner.get(position).getContent());
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SongListActivity.class);
+                intent.putExtra("banner", arrayListbanner.get(position));
+                context.startActivity(intent);
+            }
+
+        });
         container.addView(view);
         return view;
     }
