@@ -1,6 +1,7 @@
 package com.example.musicapp.Services;
 
 import com.example.musicapp.Model.Introduction;
+import com.example.musicapp.Model.Playlist;
 
 import java.util.List;
 
@@ -10,4 +11,7 @@ import retrofit2.http.GET;
 public interface Dataservice {
     @GET("songbanner.php")
     Call<List<Introduction>> GetDataBanner();
+
+    @GET("playlistforcurrentday.php")
+    Call<List<Playlist>> GetPlaylistCurrentDay();
 }
