@@ -27,7 +27,11 @@
             android:name="com.example.musicapp.Fragment.Fragment_playlist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+        <fragment
+            android:id="@+id/fragmenttopiccategory"
+            android:name="com.example.musicapp.Fragment.Fragment_Topic_Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 
