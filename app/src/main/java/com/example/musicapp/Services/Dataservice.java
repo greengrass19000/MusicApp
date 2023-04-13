@@ -1,5 +1,6 @@
 package com.example.musicapp.Services;
 
+import com.example.musicapp.Model.Album;
 import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.Model.Playlist;
 import com.example.musicapp.Model.TopicCategoryToday;
@@ -18,4 +19,7 @@ public interface Dataservice {
 
     @GET("topicandcategory.php")
     Call<TopicCategoryToday> GetTopicCategoryToday();
+
+    @GET("albumhot.php")
+    Call<List<Album>> GetAlbumHot();
 }
