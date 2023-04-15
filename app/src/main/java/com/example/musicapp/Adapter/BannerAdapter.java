@@ -10,12 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.musicapp.Activity.PlaylistActivity;
 import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.R;
-import com.example.musicapp.SongListActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -58,7 +57,7 @@ public class BannerAdapter extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, SongListActivity.class);
+                Intent intent = new Intent(context, PlaylistActivity.class);
                 intent.putExtra("banner", arrayListbanner.get(position));
                 context.startActivity(intent);
             }
