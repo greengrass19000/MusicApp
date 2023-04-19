@@ -6,12 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicapp.R;
-import com.example.musicapp.Adapter.SongsAdapter;
-import com.example.musicapp.Data.HomeSongs;
 
 public class Home extends Fragment {
 
