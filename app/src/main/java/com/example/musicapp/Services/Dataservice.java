@@ -1,5 +1,6 @@
 package com.example.musicapp.Services;
 
+import com.example.musicapp.Data.Song;
 import com.example.musicapp.Model.Album;
 import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.Model.Playlist;
@@ -8,7 +9,10 @@ import com.example.musicapp.Model.TopicCategoryToday;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface Dataservice {
     @GET("songbanner.php")
@@ -22,4 +26,9 @@ public interface Dataservice {
 
     @GET("albumhot.php")
     Call<List<Album>> GetAlbumHot();
+
+    @FormUrlEncoded
+    @POST("playlist.php")
+    Call<List<Song>> GetPlaylistFromIntroduction(@Field("introduction_id") String introduction_id);
+
 }
