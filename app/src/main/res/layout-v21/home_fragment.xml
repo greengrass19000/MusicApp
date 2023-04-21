@@ -14,5 +14,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </fragment>
+            <fragment
+                android:id="@+id/fragmentplaylist"
+                android:name="com.example.musicapp.Fragment.Fragment_playlist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <fragment
+                android:id="@+id/fragmentalbum"
+                android:name="com.example.musicapp.Fragment.Fragment_Album_Hot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <fragment
+                android:id="@+id/fragmenttopiccategory"
+                android:name="com.example.musicapp.Fragment.Fragment_Topic_Category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
 </ScrollView>

@@ -36,7 +36,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test .ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation "com.google.code.gson:gson:2.8.9"
     implementation 'com.squareup.picasso:picasso:2.71828'
@@ -49,11 +49,4 @@ dependencies {
     dependencies {
         implementation 'me.relex:circleindicator:1.2.2@aar'
     }
-//    dependencies {
-//        compile 'com.eftimoff:android-viewpager-transformers:1.0.1@aar'
-//    }
-//
-//    implementation 'com.android.support:cardview-v7:26.1.0'
-//    implementation 'com.android.support:recyclerview-v7:26.1.0'
-//    implementation 'com.android.support:design:27.0.2'
 }
