@@ -79,7 +79,7 @@ public class PlaylistActivity extends AppCompatActivity {
     private void setValueInView(String name, String img) {
         collapsingToolbarLayout.setTitle(name);
         try {
-            Log.d("setValueInView", img);
+//            Log.d("setValueInView", img);
             URL url = new URL(img);
 //            Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
 //            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
