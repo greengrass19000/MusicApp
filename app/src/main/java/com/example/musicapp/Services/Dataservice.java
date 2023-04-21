@@ -1,6 +1,6 @@
 package com.example.musicapp.Services;
 
-import com.example.musicapp.Data.Song;
+import com.example.musicapp.Model.Song;
 import com.example.musicapp.Model.Album;
 import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.Model.Playlist;
@@ -31,4 +31,6 @@ public interface Dataservice {
     @POST("playlist.php")
     Call<List<Song>> GetPlaylistFromIntroduction(@Field("introduction_id") String introduction_id);
 
+    @GET("favouritesong.php")
+    Call<List<Song>> GetFavouriteSong();
 }
