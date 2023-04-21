@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -78,10 +79,11 @@ public class PlaylistActivity extends AppCompatActivity {
     private void setValueInView(String name, String img) {
         collapsingToolbarLayout.setTitle(name);
         try {
+            Log.d("setValueInView", img);
             URL url = new URL(img);
-            Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
-            collapsingToolbarLayout.setBackground(bitmapDrawable);
+//            Bitmap bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
+//            collapsingToolbarLayout.setBackground(bitmapDrawable);
         } catch (MalformedURLException e){
             e.printStackTrace();
         } catch (IOException e) {
@@ -91,7 +93,7 @@ public class PlaylistActivity extends AppCompatActivity {
     }
 
     private void init() {
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

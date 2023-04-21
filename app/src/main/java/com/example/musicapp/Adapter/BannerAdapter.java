@@ -41,7 +41,7 @@ public class BannerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+        final LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.row_banner, null);
 
         ImageView background = view.findViewById(R.id.imageviewbackgroundbanner);
@@ -57,10 +57,10 @@ public class BannerAdapter extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "da click", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(context, PlaylistActivity.class);
-//                intent.putExtra("banner", arrayListbanner.get(position));
-//                context.startActivity(intent);
+//                Toast.makeText(context, "da click", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, PlaylistActivity.class);
+                intent.putExtra("banner", arrayListbanner.get(position));
+                context.startActivity(intent);
             }
 
         });
