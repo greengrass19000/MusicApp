@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.TopicActivity"
+    tools:context=".Activity.CategoryActivity"
     android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:id="@+id/toolbarAllCategories" />
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbarcategorybytopic"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize">
+
+</androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleviewcategorybytopic"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerviewAllTopics" />
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

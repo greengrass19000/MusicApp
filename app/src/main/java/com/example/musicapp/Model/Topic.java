@@ -3,7 +3,9 @@ package com.example.musicapp.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Topic {
+import java.io.Serializable;
+
+public class Topic implements Serializable {
 
     @SerializedName("topicId")
     @Expose

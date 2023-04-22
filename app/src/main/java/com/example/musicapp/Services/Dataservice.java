@@ -41,6 +41,10 @@ public interface Dataservice {
     @POST("playlist.php")
     Call<List<Song>> GetCategory(@Field("idcatergory") int idcatergory);
 
+    @FormUrlEncoded
+    @POST("categoriesbytopic.php")
+    Call<List<Category>> GetCategoryByTopic(@Field("idchude") int idchude);
+
     @GET("allplaylists.php")
     Call<List<Playlist>> GetAllPlaylists();
 

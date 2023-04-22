@@ -29,13 +29,13 @@ public class TopicActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topic);
-        init();
         GetData();
+        init();
     }
 
 
     private void init() {
-        recyclerViewAllCategories = findViewById(R.id.recyclerviewAllCategories);
+        recyclerViewAllCategories = findViewById(R.id.recyclerviewAllTopics);
         toolbarAllCategories = findViewById(R.id.toolbarAllCategories);
         setSupportActionBar(toolbarAllCategories);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
