@@ -37,8 +37,8 @@ public class FavouriteSongAdapter extends RecyclerView.Adapter<FavouriteSongAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Song song = songList.get(position);
         holder.txtSinger.setText(song.getSinger());
-        holder.txtName.setText(song.getName());
-        Picasso.get().load(song.getImg()).into(holder.img);
+        holder.txtName.setText(song.getSongName());
+        Picasso.get().load(song.getSongImage()).into(holder.img);
     }
 
     @Override
