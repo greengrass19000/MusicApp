@@ -31,6 +31,10 @@ public interface Dataservice {
     @POST("playlist.php")
     Call<List<Song>> GetPlaylistFromIntroduction(@Field("idquangcao") int idquangcao);
 
+    @FormUrlEncoded
+    @POST("playlist.php")
+    Call<List<Song>> GetPlaylist(@Field("idplaylist") int idplaylist);
+
     @GET("favouritesong.php")
     Call<List<Song>> GetFavouriteSong();
 }

@@ -1,10 +1,12 @@
 package com.example.musicapp.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -14,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.musicapp.Activity.SonglistActivity;
 import com.example.musicapp.Adapter.PlaylistAdapter;
 import com.example.musicapp.Model.Playlist;
 import com.example.musicapp.R;
@@ -55,6 +58,14 @@ public class Fragment_playlist extends Fragment {
                 playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_list_item_1, playlistArrayList);
                 lvplaylist.setAdapter(playlistAdapter);
                 setListViewHeightBasedOnChildren(lvplaylist);
+                lvplaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        Intent intent = new Intent(getActivity(), SonglistActivity.class);
+                        intent.putExtra("itemplaylist", playlistArrayList.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

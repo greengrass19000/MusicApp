@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.musicapp.Adapter.SonglistAdapter;
+import com.example.musicapp.Model.Playlist;
 import com.example.musicapp.Model.Song;
 import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.R;
@@ -44,7 +45,7 @@ public class SonglistActivity extends AppCompatActivity {
     ImageView imageViewPlaylist;
     ArrayList<Song> songList;
     SonglistAdapter songlistAdapter;
-
+    Playlist playlist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,30 @@ public class SonglistActivity extends AppCompatActivity {
             setValueInView(introduction.getSongName(), introduction.getImage());
             GetIntroductionData(introduction.getIntroductionId());
         }
+
+        if (playlist != null && !playlist.getName().equals("")) {
+            setValueInView(playlist.getName(), playlist.getImg());
+            GetDataPlaylist(playlist.getIdPlaylist());
+        }
+    }
+
+    private void GetDataPlaylist(String idplaylist) {
+        Dataservice dataservice = APIService.getService();
+        Call<List<Song>> callback = dataservice.GetPlaylist(Integer.parseInt(idplaylist));
+        callback.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songList = (ArrayList<Song>) response.body();
+                songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
+                recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
+                recyclerViewPlaylist.setAdapter(songlistAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void GetIntroductionData(String introductionId) {
@@ -122,6 +147,10 @@ public class SonglistActivity extends AppCompatActivity {
             if (intent.hasExtra("banner")) {
                 introduction = (Introduction) intent.getSerializableExtra("banner");
                 Toast.makeText(this, introduction.getSongName(), Toast.LENGTH_SHORT).show();
+            }
+            if (intent.hasExtra("itemplaylist")) {
+                playlist = (Playlist) intent.getSerializableExtra("itemplaylist");
+
             }
         }
     }
