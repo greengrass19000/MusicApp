@@ -7,18 +7,9 @@ import java.io.Serializable;
 
 public class Song implements Serializable {
 
-    @SerializedName("song_id")
+    @SerializedName("songId")
     @Expose
     private int songId;
-    @SerializedName("album_id")
-    @Expose
-    private String albumId;
-    @SerializedName("category_id")
-    @Expose
-    private String categoryId;
-    @SerializedName("playlist_id")
-    @Expose
-    private String playlistId;
     @SerializedName("name")
     @Expose
     private String songName;
@@ -43,21 +34,11 @@ public class Song implements Serializable {
         return songId;
     }
 
-    public String getAlbumId() {
-        return albumId;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
 
     public String getLink() {
         return link;
     }
 
-    public String getPlaylistId() {
-        return playlistId;
-    }
 
     public String getSongImage() {
         return songImage;
@@ -71,13 +52,6 @@ public class Song implements Serializable {
         return songName;
     }
 
-    public void setAlbumId(String albumId) {
-        this.albumId = albumId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
 
     public void setLikerate(int likerate) {
         this.likerate = likerate;
@@ -85,10 +59,6 @@ public class Song implements Serializable {
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    public void setPlaylistId(String playlistId) {
-        this.playlistId = playlistId;
     }
 
     public void setSinger(String singer) {

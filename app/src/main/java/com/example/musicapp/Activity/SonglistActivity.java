@@ -3,21 +3,19 @@ package com.example.musicapp.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.musicapp.Data.Song;
+import com.example.musicapp.Adapter.SonglistAdapter;
+import com.example.musicapp.Model.Song;
 import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.R;
 import com.example.musicapp.Services.APIService;
@@ -36,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PlaylistActivity extends AppCompatActivity {
+public class SonglistActivity extends AppCompatActivity {
     CoordinatorLayout coordinatorLayout;
     CollapsingToolbarLayout collapsingToolbarLayout;
     Toolbar toolbar;
@@ -45,6 +43,7 @@ public class PlaylistActivity extends AppCompatActivity {
     Introduction introduction;
     ImageView imageViewPlaylist;
     ArrayList<Song> songList;
+    SonglistAdapter songlistAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +61,16 @@ public class PlaylistActivity extends AppCompatActivity {
 
     private void GetIntroductionData(String introductionId) {
         Dataservice dataservice = APIService.getService();
-        Call<List<Song>> callback = dataservice.GetPlaylistFromIntroduction(introductionId);
+        Call<List<Song>> callback = dataservice.GetPlaylistFromIntroduction(Integer.parseInt(introductionId));
         callback.enqueue(new Callback<List<Song>>() {
             @Override
             public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
                 songList = (ArrayList<Song>) response.body();
+                Log.d("BBB", songList.get(0).getSongName());
+//                songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
+//                recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
+//                recyclerViewPlaylist.setAdapter(songlistAdapter);
+
             }
 
             @Override
@@ -85,8 +89,6 @@ public class PlaylistActivity extends AppCompatActivity {
 //            BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bitmap);
 //            collapsingToolbarLayout.setBackground(bitmapDrawable);
         } catch (MalformedURLException e){
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
         Picasso.get().load(img).into(imageViewPlaylist);
