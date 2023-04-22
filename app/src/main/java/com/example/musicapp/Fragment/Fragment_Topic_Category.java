@@ -15,11 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.example.musicapp.Activity.CategoryActivity;
+import com.example.musicapp.Activity.TopicActivity;
 import com.example.musicapp.Activity.SonglistActivity;
-import com.example.musicapp.Adapter.PlaylistAdapter;
 import com.example.musicapp.Model.Category;
-import com.example.musicapp.Model.Playlist;
 import com.example.musicapp.Model.Topic;
 import com.example.musicapp.Model.TopicCategoryToday;
 import com.example.musicapp.R;
@@ -28,7 +26,6 @@ import com.example.musicapp.Services.Dataservice;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +45,7 @@ public class Fragment_Topic_Category extends Fragment {
         txtViewMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CategoryActivity.class);
+                Intent intent = new Intent(getActivity(), TopicActivity.class);
                 startActivity(intent);
             }
         });

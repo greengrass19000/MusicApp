@@ -5,6 +5,7 @@ import com.example.musicapp.Model.Song;
 import com.example.musicapp.Model.Album;
 import com.example.musicapp.Model.Introduction;
 import com.example.musicapp.Model.Playlist;
+import com.example.musicapp.Model.Topic;
 import com.example.musicapp.Model.TopicCategoryToday;
 
 import java.util.List;
@@ -43,8 +44,8 @@ public interface Dataservice {
     @GET("allplaylists.php")
     Call<List<Playlist>> GetAllPlaylists();
 
-    @GET("allcategories.php")
-    Call<List<Category>> GetAllCategories();
+    @GET("alltopics.php")
+    Call<List<Topic>> GetAllTopics();
 
     @GET("favouritesong.php")
     Call<List<Song>> GetFavouriteSong();

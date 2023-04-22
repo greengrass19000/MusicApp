@@ -6,11 +6,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.musicapp.Adapter.CategoryAdapter;
-import com.example.musicapp.Model.Category;
+import com.example.musicapp.Adapter.TopicAdapter;
+import com.example.musicapp.Model.Topic;
 import com.example.musicapp.R;
 import com.example.musicapp.Services.APIService;
 import com.example.musicapp.Services.Dataservice;
@@ -22,15 +21,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CategoryActivity extends AppCompatActivity {
+public class TopicActivity extends AppCompatActivity {
     RecyclerView recyclerViewAllCategories;
     Toolbar toolbarAllCategories;
-
-    CategoryAdapter categoryAdapter;
+    TopicAdapter topicAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_topic);
         init();
         GetData();
     }
@@ -52,19 +50,19 @@ public class CategoryActivity extends AppCompatActivity {
 
     private void GetData() {
         Dataservice dataservice = APIService.getService();
-        Call<List<Category>> callback = dataservice.GetAllCategories();
-        callback.enqueue(new Callback<List<Category>>() {
+        Call<List<Topic>> callback = dataservice.GetAllTopics();
+        callback.enqueue(new Callback<List<Topic>>() {
             @Override
-            public void onResponse(Call<List<Category>> call, Response<List<Category>> response) {
-                ArrayList<Category> categories = (ArrayList<Category>) response.body();
-//                Log.d("ALLCATEGORIES", categories.get(0).getName());
-                categoryAdapter = new CategoryAdapter(CategoryActivity.this, categories);
-                recyclerViewAllCategories.setLayoutManager(new GridLayoutManager(CategoryActivity.this, 1));
-                recyclerViewAllCategories.setAdapter(categoryAdapter);
+            public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
+                ArrayList<Topic> topics = (ArrayList<Topic>) response.body();
+//                Log.d("ALLTOPICS", topics.get(0).getName());
+                topicAdapter = new TopicAdapter(TopicActivity.this, topics);
+                recyclerViewAllCategories.setLayoutManager(new GridLayoutManager(TopicActivity.this, 1));
+                recyclerViewAllCategories.setAdapter(topicAdapter);
             }
 
             @Override
-            public void onFailure(Call<List<Category>> call, Throwable t) {
+            public void onFailure(Call<List<Topic>> call, Throwable t) {
 
             }
         });
