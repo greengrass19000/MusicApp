@@ -1,5 +1,6 @@
 package com.example.musicapp.Services;
 
+import com.example.musicapp.Model.Category;
 import com.example.musicapp.Model.Song;
 import com.example.musicapp.Model.Album;
 import com.example.musicapp.Model.Introduction;
@@ -34,6 +35,16 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("playlist.php")
     Call<List<Song>> GetPlaylist(@Field("idplaylist") int idplaylist);
+
+    @FormUrlEncoded
+    @POST("playlist.php")
+    Call<List<Song>> GetCategory(@Field("idcatergory") int idcatergory);
+
+    @GET("allplaylists.php")
+    Call<List<Playlist>> GetAllPlaylists();
+
+    @GET("allcategories.php")
+    Call<List<Category>> GetAllCategories();
 
     @GET("favouritesong.php")
     Call<List<Song>> GetFavouriteSong();

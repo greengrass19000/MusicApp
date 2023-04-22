@@ -1,5 +1,6 @@
 package com.example.musicapp.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.example.musicapp.Activity.CategoryActivity;
+import com.example.musicapp.Activity.SonglistActivity;
 import com.example.musicapp.Adapter.PlaylistAdapter;
 import com.example.musicapp.Model.Category;
 import com.example.musicapp.Model.Playlist;
@@ -42,6 +45,13 @@ public class Fragment_Topic_Category extends Fragment {
         view = inflater.inflate(R.layout.fragment_topic_category, container, false);
         horizontalScrollView = view.findViewById(R.id.horizontalscrollview);
         txtViewMore = view.findViewById(R.id.textviewviewmoretopiccategory);
+        txtViewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
         GetData();
         return view;
     }
@@ -88,6 +98,16 @@ public class Fragment_Topic_Category extends Fragment {
                     cardView.setLayoutParams(layout);
                     cardView.addView(imageView);
                     linearLayout.addView(cardView);
+
+                    final int finalI = i;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getActivity(), SonglistActivity.class);
+                            intent.putExtra("categoryId", categoryList.get(finalI));
+                            startActivity(intent);
+                        }
+                    });
                 }
                 horizontalScrollView.addView(linearLayout);
             }
