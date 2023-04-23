@@ -142,7 +142,6 @@ public class SonglistActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
                 songList = (ArrayList<Song>) response.body();
-                Log.d("BBB", songList.get(0).getSongName());
                 songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
                 recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
                 recyclerViewPlaylist.setAdapter(songlistAdapter);

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.musicapp.Activity.AllAlbumActivity;
+import com.example.musicapp.Activity.SonglistActivity;
 import com.example.musicapp.Model.Album;
 import com.example.musicapp.R;
 import com.squareup.picasso.Picasso;
@@ -40,6 +40,7 @@ public class AllAlbumAdapter extends RecyclerView.Adapter<AllAlbumAdapter.ViewHo
         Album album = albumList.get(position);
         Picasso.get().load(album.getImage()).into(holder.imgAllAlbum);
         holder.txtAllAlbumName.setText(album.getName());
+        holder.txtAllAlbumSinger.setText(album.getSinger());
     }
 
     @Override
@@ -50,16 +51,18 @@ public class AllAlbumAdapter extends RecyclerView.Adapter<AllAlbumAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgAllAlbum;
         TextView txtAllAlbumName;
+        TextView txtAllAlbumSinger;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imgAllAlbum = itemView.findViewById(R.id.imageviewallalbum);
             txtAllAlbumName = itemView.findViewById(R.id.textviewallalbumname);
+            txtAllAlbumSinger = itemView.findViewById(R.id.textviewallalbumsinger);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, AllAlbumActivity.class);
-                    intent.putExtra("album", albumList.get(getAdapterPosition()));
+                    Intent intent = new Intent(context, SonglistActivity.class);
+                    intent.putExtra("album", albumList.get(getPosition()));
                     context.startActivity(intent);
                 }
             });
