@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.musicapp.Adapter.SonglistAdapter;
+import com.example.musicapp.Model.Album;
 import com.example.musicapp.Model.Category;
 import com.example.musicapp.Model.Playlist;
 import com.example.musicapp.Model.Song;
@@ -48,6 +49,7 @@ public class SonglistActivity extends AppCompatActivity {
     SonglistAdapter songlistAdapter;
     Playlist playlist;
     Category category;
+    Album album;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,29 @@ public class SonglistActivity extends AppCompatActivity {
             setValueInView(category.getName(), category.getImage());
             GetDataCategory(category.getCategoryId());
         }
+        if (album != null && !album.getName().equals("")) {
+            setValueInView(album.getName(), album.getImage());
+            GetDataAlbum(album.getAlbumId());
+        }
+    }
+
+    private void GetDataAlbum(String albumId) {
+        Dataservice dataservice = APIService.getService();
+        Call<List<Song>> callback = dataservice.GetAlbum(Integer.parseInt(albumId));
+        callback.enqueue(new Callback<List<Song>>() {
+            @Override
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                songList = (ArrayList<Song>) response.body();
+                songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
+                recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
+                recyclerViewPlaylist.setAdapter(songlistAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Song>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void GetDataCategory(String categoryId) {
@@ -180,6 +205,9 @@ public class SonglistActivity extends AppCompatActivity {
             }
             if (intent.hasExtra("categoryId")) {
                 category = (Category) intent.getSerializableExtra("categoryId");
+            }
+            if (intent.hasExtra("album")) {
+                album = (Album) intent.getSerializableExtra("album");
             }
         }
     }

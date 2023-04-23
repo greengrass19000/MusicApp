@@ -56,4 +56,8 @@ public interface Dataservice {
 
     @GET("allalbum.php")
     Call<List<Album>> GetAllAlbum();
+
+    @FormUrlEncoded
+    @POST("playlist.php")
+    Call<List<Song>> GetAlbum(@Field("album_id") int album_id);
 }
