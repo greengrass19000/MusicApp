@@ -6,15 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicapp.Model.Song;
 import com.example.musicapp.R;
+import com.example.musicapp.Services.APIService;
+import com.example.musicapp.Services.Dataservice;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FavouriteSongAdapter extends RecyclerView.Adapter<FavouriteSongAdapter.ViewHolder> {
     Context context;
@@ -55,6 +62,31 @@ public class FavouriteSongAdapter extends RecyclerView.Adapter<FavouriteSongAdap
             txtSinger = itemView.findViewById(R.id.textviewfavouritesongsinger);
             img = itemView.findViewById(R.id.imageviewfavouritesong);
             imgLikerate = itemView.findViewById(R.id.imageviewlikerate);
+            imgLikerate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    imgLikerate.setImageResource(R.drawable.iconloved);
+                    Dataservice dataservice = APIService.getService();
+                    Call<String> callback = dataservice.UpdateLikerate("1", songList.get(getPosition()).getSongId());
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            String res = response.body();
+                            if (res.equals("Success")) {
+                                Toast.makeText(context, "Liked", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+
+                        }
+                    });
+                    imgLikerate.setEnabled(false);
+                }
+            });
         }
     }
 }
