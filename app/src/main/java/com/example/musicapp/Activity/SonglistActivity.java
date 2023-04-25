@@ -88,6 +88,7 @@ public class SonglistActivity extends AppCompatActivity {
                 songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
                 recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
                 recyclerViewPlaylist.setAdapter(songlistAdapter);
+                eventClick();
             }
 
             @Override
@@ -107,6 +108,7 @@ public class SonglistActivity extends AppCompatActivity {
                 songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
                 recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
                 recyclerViewPlaylist.setAdapter(songlistAdapter);
+                eventClick();
             }
 
             @Override
@@ -126,6 +128,7 @@ public class SonglistActivity extends AppCompatActivity {
                 songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
                 recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
                 recyclerViewPlaylist.setAdapter(songlistAdapter);
+                eventClick();
             }
 
             @Override
@@ -145,7 +148,7 @@ public class SonglistActivity extends AppCompatActivity {
                 songlistAdapter = new SonglistAdapter(SonglistActivity.this, songList);
                 recyclerViewPlaylist.setLayoutManager(new LinearLayoutManager(SonglistActivity.this));
                 recyclerViewPlaylist.setAdapter(songlistAdapter);
-
+                eventClick();
             }
 
             @Override
@@ -180,6 +183,7 @@ public class SonglistActivity extends AppCompatActivity {
         });
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+        floatingActionButton.setEnabled(false);
     }
 
     private void mapping() {
@@ -209,5 +213,18 @@ public class SonglistActivity extends AppCompatActivity {
                 album = (Album) intent.getSerializableExtra("album");
             }
         }
+    }
+
+    private void eventClick() {
+        floatingActionButton.setEnabled(true);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(SonglistActivity.this, PlayerActivity.class);
+                intent.putExtra("songs", songList);
+                startActivity(intent);
+            }
+        });
     }
 }

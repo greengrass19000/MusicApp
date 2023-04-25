@@ -1,6 +1,7 @@
 package com.example.musicapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicapp.Activity.PlayerActivity;
 import com.example.musicapp.Activity.SonglistActivity;
 import com.example.musicapp.Model.Playlist;
 import com.example.musicapp.Model.Song;
@@ -92,6 +94,14 @@ public class SonglistAdapter extends RecyclerView.Adapter<SonglistAdapter.ViewHo
                         }
                     });
                     imglikerate.setEnabled(false);
+                }
+            });
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, PlayerActivity.class);
+                    intent.putExtra("song", songs.get(getPosition()));
+                    context.startActivity(intent);
                 }
             });
         }

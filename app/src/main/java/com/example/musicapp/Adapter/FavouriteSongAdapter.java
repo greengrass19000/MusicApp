@@ -1,6 +1,7 @@
 package com.example.musicapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.musicapp.Activity.PlayerActivity;
 import com.example.musicapp.Model.Song;
 import com.example.musicapp.R;
 import com.example.musicapp.Services.APIService;
@@ -62,6 +64,14 @@ public class FavouriteSongAdapter extends RecyclerView.Adapter<FavouriteSongAdap
             txtSinger = itemView.findViewById(R.id.textviewfavouritesongsinger);
             img = itemView.findViewById(R.id.imageviewfavouritesong);
             imgLikerate = itemView.findViewById(R.id.imageviewlikerate);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, PlayerActivity.class);
+                    intent.putExtra("song", songList.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
             imgLikerate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

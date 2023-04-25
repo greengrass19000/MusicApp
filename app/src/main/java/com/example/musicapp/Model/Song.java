@@ -1,11 +1,16 @@
 package com.example.musicapp.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Song implements Serializable {
+public class Song implements Parcelable {
 
     @SerializedName("songId")
     @Expose
@@ -25,6 +30,27 @@ public class Song implements Serializable {
     @SerializedName("likerate")
     @Expose
     private int likerate;
+
+    protected Song(Parcel in) {
+        songId = in.readInt();
+        songName = in.readString();
+        songImage = in.readString();
+        singer = in.readString();
+        link = in.readString();
+        likerate = in.readInt();
+    }
+
+    public static final Creator<Song> CREATOR = new Creator<Song>() {
+        @Override
+        public Song createFromParcel(Parcel in) {
+            return new Song(in);
+        }
+
+        @Override
+        public Song[] newArray(int size) {
+            return new Song[size];
+        }
+    };
 
     public int getLikerate() {
         return likerate;
@@ -75,5 +101,20 @@ public class Song implements Serializable {
 
     public void setSongName(String songName) {
         this.songName = songName;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeInt(songId);
+        parcel.writeString(songName);
+        parcel.writeString(songImage);
+        parcel.writeString(singer);
+        parcel.writeString(link);
+        parcel.writeInt(likerate);
     }
 }
