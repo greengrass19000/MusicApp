@@ -24,22 +24,29 @@ public class PlayerActivity extends AppCompatActivity {
     TextView txtTimesong, txtTotaltimesong;
     SeekBar sktime;
     ImageButton imgplay, imgrepeat, imgnext, imgpre, imgshuffle, imgsleeptimer;
+    public static ArrayList<Song> songArrayList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
         init();
+        GetDataFromIntent();
+
+    }
+
+    private void GetDataFromIntent() {
         Intent intent = getIntent();
+        songArrayList.clear();
+        if (intent == null) return;
         if (intent.hasExtra("song")) {
             Song song = intent.getParcelableExtra("song");
-            Toast.makeText(this, song.getSongName(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, song.getSongName(), Toast.LENGTH_SHORT).show();
+            songArrayList.add(song);
         }
         if (intent.hasExtra("songs")) {
             ArrayList<Song> songs = intent.getParcelableArrayListExtra("songs");
-            for (int i = 0; i < songs.size(); i++) {
-                Log.d("playsongs", songs.get(i).getSongName());
-            }
-//            Toast.makeText(this, songs.get(0).getSongName(), Toast.LENGTH_SHORT).show();
+            songArrayList = songs;
         }
     }
 
