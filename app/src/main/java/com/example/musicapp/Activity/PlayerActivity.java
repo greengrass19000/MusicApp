@@ -2,6 +2,8 @@ package com.example.musicapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +15,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.musicapp.Adapter.ViewPagerPlaylist;
+import com.example.musicapp.Fragment.Fragment_Play_SongList;
+import com.example.musicapp.Fragment.Fragment_Song_View;
 import com.example.musicapp.Model.Song;
 import com.example.musicapp.R;
 
@@ -24,7 +29,11 @@ public class PlayerActivity extends AppCompatActivity {
     TextView txtTimesong, txtTotaltimesong;
     SeekBar sktime;
     ImageButton imgplay, imgrepeat, imgnext, imgpre, imgshuffle, imgsleeptimer;
+    ViewPager viewPagerPlayer;
     public static ArrayList<Song> songArrayList = new ArrayList<>();
+    public static ViewPagerPlaylist adapterPlaylist;
+    Fragment_Song_View fragment_song_view;
+    Fragment_Play_SongList fragment_play_songList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +70,7 @@ public class PlayerActivity extends AppCompatActivity {
         imgpre = findViewById(R.id.imagebuttonpreview);
         imgshuffle = findViewById(R.id.imagebuttonshuffle);
         imgsleeptimer = findViewById(R.id.imagebuttonsleeptimer);
+        viewPagerPlayer = findViewById(R.id.viewpagerplaynhac);
         setSupportActionBar(toolbarplayer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbarplayer.setNavigationOnClickListener(new View.OnClickListener() {
@@ -70,6 +80,12 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
         toolbarplayer.setTitleTextColor(Color.WHITE);
+        fragment_play_songList = new Fragment_Play_SongList();
+        fragment_song_view = new Fragment_Song_View();
+        adapterPlaylist = new ViewPagerPlaylist(getSupportFragmentManager());
+        adapterPlaylist.AddFragment(fragment_play_songList);
+        adapterPlaylist.AddFragment(fragment_song_view);
+        viewPagerPlayer.setAdapter(adapterPlaylist);
     }
 
 }

@@ -10,7 +10,6 @@ import com.example.musicapp.Fragment.Library;
 import com.example.musicapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.musicapp.Fragment.Home;
-import com.example.musicapp.Fragment.LibraryMainFragment;
 import com.example.musicapp.Fragment.Search;
 
 public class MainActivity extends AppCompatActivity {
