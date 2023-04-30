@@ -17,7 +17,6 @@ import com.squareup.picasso.Picasso;
 public class Fragment_Song_View extends Fragment {
     View view;
     ImageView imageView;
-    ObjectAnimator objectAnimator;
 
     @Nullable
     @Override
@@ -26,5 +25,8 @@ public class Fragment_Song_View extends Fragment {
         imageView = view.findViewById(R.id.imageView);
 
         return view;
+    }
+
+    public void PlayMusic(String songImage) {
     }
 }
