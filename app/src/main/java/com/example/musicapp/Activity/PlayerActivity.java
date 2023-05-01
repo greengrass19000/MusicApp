@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -168,6 +169,7 @@ public class PlayerActivity extends AppCompatActivity {
                         new PlayMusic().execute(songArrayList.get(position).getLink());
                         fragment_song_view.PlayMusic(songArrayList.get(position).getSongImage());
                         getSupportActionBar().setTitle(songArrayList.get(position).getSongName());
+                        UpdateTime();
                     }
                 }
                 imgpre.setClickable(false);
@@ -210,6 +212,7 @@ public class PlayerActivity extends AppCompatActivity {
                         new PlayMusic().execute(songArrayList.get(position).getLink());
                         fragment_song_view.PlayMusic(songArrayList.get(position).getSongImage());
                         getSupportActionBar().setTitle(songArrayList.get(position).getSongName());
+                        UpdateTime();
                     }
                 }
                 imgpre.setClickable(false);
@@ -308,6 +311,7 @@ public class PlayerActivity extends AppCompatActivity {
             }
             mediaPlayer.start();
             TimeSong();
+            UpdateTime();
         }
 
 
@@ -317,5 +321,77 @@ public class PlayerActivity extends AppCompatActivity {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
         txtTotaltimesong.setText(simpleDateFormat.format(mediaPlayer.getDuration()));
         sktime.setMax(mediaPlayer.getDuration());
+    }
+
+    private void UpdateTime() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (mediaPlayer != null) {
+                    sktime.setProgress(mediaPlayer.getCurrentPosition());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
+                    txtTimesong.setText(simpleDateFormat.format(mediaPlayer.getCurrentPosition()));
+                    handler.postDelayed(this, 300);
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+                            next = true;
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    });
+                }
+            }
+        }, 300);
+        Handler handler1 = new Handler();
+        handler1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (next == true) {
+                    if (position < (songArrayList.size())) {
+                        imgplay.setImageResource(R.drawable.iconpause);
+                        position++;
+                        if (repeat == true) {
+                            if (position == 0) {
+                                position = songArrayList.size();
+                            }
+                            position -= 1;
+                        }
+                        if (random == true) {
+                            Random random1 = new Random();
+                            int index = random1.nextInt(songArrayList.size());
+                            if (index == position) {
+                                position = index - 1;
+                            }
+                            position = index;
+                        }
+                        if (position > songArrayList.size() - 1) {
+                            position = 0;
+                        }
+                        new PlayMusic().execute(songArrayList.get(position).getLink());
+                        fragment_song_view.PlayMusic(songArrayList.get(position).getSongImage());
+                        getSupportActionBar().setTitle(songArrayList.get(position).getSongName());
+                    }
+                    imgpre.setClickable(false);
+                    imgnext.setClickable(false);
+                    Handler handler1 = new Handler();
+                    handler1.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            imgnext.setClickable(true);
+                            imgpre.setClickable(true);
+                        }
+                    }, 5000);
+                    next = false;
+                    handler1.removeCallbacks(this);
+                } else {
+                    handler1.postDelayed(this, 1000);
+                }
+            }
+        }, 1000);
     }
 }
