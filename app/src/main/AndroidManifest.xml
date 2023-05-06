@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -46,6 +48,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".Activity.NotificationBroadcast"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.musicapp.previous" />
+                <action android:name="com.example.musicapp.delete" />
+                <action android:name="com.example.musicapp.pause" />
+                <action android:name="com.example.musicapp.next" />
+                <action android:name="com.example.musicapp.play" />
+            </intent-filter>
+
+        </receiver>
     </application>
 
 </manifest>

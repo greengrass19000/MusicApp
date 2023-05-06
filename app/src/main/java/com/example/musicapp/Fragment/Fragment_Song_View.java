@@ -22,7 +22,7 @@ public class Fragment_Song_View extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_song_image, container, false);
-        imageView = view.findViewById(R.id.imageView);
+        imageView = view.findViewById(R.id.imageview);
 
         return view;
     }

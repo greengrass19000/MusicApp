@@ -12,8 +12,15 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarplaynhac"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center">
     </androidx.appcompat.widget.Toolbar>
+    <Button
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:id="@+id/buttonchecknotification"
+        />
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpagerplaynhac"
         android:layout_weight="8"
@@ -101,7 +108,7 @@
                 android:layout_height="50dp"
                 android:layout_marginRight="15dp"/>
             <ImageButton
-                android:src="@drawable/sleeptimer"
+                android:src="@drawable/sleeptimer3"
                 android:scaleType="fitXY"
                 android:id="@+id/imagebuttonsleeptimer"
                 android:layout_width="50dp"

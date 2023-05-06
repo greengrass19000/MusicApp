@@ -1,23 +1,42 @@
 package com.example.musicapp.Activity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +52,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class PlayerActivity extends AppCompatActivity {
-
+    String[] permissions = new String[]{
+            Manifest.permission.POST_NOTIFICATIONS
+    };
+    Button buttonchecknotification;
     Toolbar toolbarplayer;
     TextView txtTimesong, txtTotaltimesong;
     SeekBar sktime;
@@ -49,6 +71,17 @@ public class PlayerActivity extends AppCompatActivity {
     boolean repeat = false;
     boolean random = false;
     boolean next = false;
+
+    private boolean permission_post_notification = false;
+    public static final String CHANNEL_ID_1 = "1";
+    public static final String CHANNEL_ID_2 = "2";
+    public static final String NOTIFY_PREVIOUS = "com.example.musicapp.previous";
+    public static final String NOTIFY_DELETE = "com.example.musicapp.delete";
+    public static final String NOTIFY_PAUSE = "com.example.musicapp.pause";
+    public static final String NOTIFY_PLAY = "com.example.musicapp.play";
+    public static final String NOTIFY_NEXT = "com.example.musicapp.next";
+
+    //    MediaSessionCompat mediaSession;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +108,14 @@ public class PlayerActivity extends AppCompatActivity {
                 }
             }
         }, 500);
+
+        imgsleeptimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("BBB", "hehehehhe");
+                showNotification(view);
+            }
+        });
         imgplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -228,6 +269,39 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
     }
+    private ActivityResultLauncher<String> requestPermissionLauncherNotification = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+        if (isGranted) {
+            permission_post_notification = true;
+            Log.d("PERMISSION", "Granted");
+        } else {
+            permission_post_notification = false;
+            showPermissionDialog();
+        }
+    });
+    public void showPermissionDialog() {
+        new AlertDialog.Builder(
+                PlayerActivity.this
+        ).setTitle("Alert for permission")
+                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent rintent = new Intent();
+                        rintent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        rintent.setData(uri);
+                        startActivity(rintent);
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
+    }
+
     private void GetDataFromIntent() {
         Intent intent = getIntent();
         songArrayList.clear();
@@ -240,13 +314,11 @@ public class PlayerActivity extends AppCompatActivity {
         if (intent.hasExtra("songs")) {
             ArrayList<Song> songs = intent.getParcelableArrayListExtra("songs");
             songArrayList = songs;
-            for (int i = 0; i < songArrayList.size(); i++) {
-                Log.d("asdf", songArrayList.get(i).getSongName());
-            }
         }
     }
 
     private void init() {
+        buttonchecknotification = findViewById(R.id.buttonchecknotification);
         toolbarplayer = findViewById(R.id.toolbarplaynhac);
         txtTimesong = findViewById(R.id.textviewtimesong);
         txtTotaltimesong = findViewById(R.id.textviewtotaltimesong);
@@ -276,11 +348,12 @@ public class PlayerActivity extends AppCompatActivity {
         adapterPlaylist.AddFragment(fragment_song_view);
         viewPagerPlayer.setAdapter(adapterPlaylist);
         fragment_song_view = (Fragment_Song_View) adapterPlaylist.getItem(1);
-        if(songArrayList.size() > 0) {
+        if (songArrayList.size() > 0) {
             getSupportActionBar().setTitle(songArrayList.get(0).getSongName());
             new PlayMusic().execute(songArrayList.get(0).getLink());
             imgplay.setImageResource(R.drawable.iconpause);
         }
+
     }
 
     class PlayMusic extends AsyncTask<String, Void, String> {
@@ -393,5 +466,43 @@ public class PlayerActivity extends AppCompatActivity {
                 }
             }
         }, 1000);
+
+
     }
+
+    public void showNotification(View view) {
+        Intent notifyIntent = new Intent(this, PlayerActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        createNotificationChannel();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
+                .setSmallIcon(R.drawable.spotify_icon_green)
+                .setContentTitle("My notification")
+                .setContentText("Much longer text that cannot fit one line...")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            Log.d("BBB", "not granted");
+            requestPermissionLauncherNotification.launch(permissions[0]);
+        }
+        Log.d("BBB", "granted");
+        notificationManager.notify(1, builder.build());
+
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel);
+            String description = "Default";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("1", name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
 }

@@ -2,11 +2,11 @@
     <string name="app_name">Music App</string>
     <string name="name_txt" />
     <string name="name">Name Placeholder</string>
-    <string name="top_artist_txtView">Top Artists</string>
     <string name="author_name">by GreenGrass</string>
     <string name="hello">Hi There!</string>
     <string name="your_playlists">Your Playlists</string>
     <string name="liked_songs">Liked Songs</string>
     <string name="podcast">Podcast</string>
     <string name="dance_music">Dance Music</string>
+    <string name="channel">1</string>
 </resources>

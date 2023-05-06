@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textviewsongnamenotification"
+                android:gravity="center_vertical"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/buttonClose"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/whiteclose"
+                />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:gravity="center">
+            <Button
+                android:background="@drawable/iconpreview"
+                android:scaleType="fitXY"
+                android:id="@+id/imagebuttonpreviewnotification"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"/>
+            <Button
+                android:background="@drawable/iconplay"
+                android:id="@+id/imagebuttonplaynotification"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:scaleType="fitXY" />
+            <Button
+                android:background="@drawable/iconnext"
+                android:scaleType="fitXY"
+                android:id="@+id/imagebuttonnextnotification"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"/>
+            </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>
