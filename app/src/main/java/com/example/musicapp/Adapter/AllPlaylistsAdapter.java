@@ -42,7 +42,7 @@ public class AllPlaylistsAdapter extends RecyclerView.Adapter<AllPlaylistsAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Playlist playlist = playlistArrayList.get(position);
         Picasso.get().load(playlist.getImg()).into(holder.imgBackground);
-
+        holder.txtName.setText(playlist.getName());
     }
 
     @Override
@@ -57,7 +57,7 @@ public class AllPlaylistsAdapter extends RecyclerView.Adapter<AllPlaylistsAdapte
         public ViewHolder(View itemView) {
             super(itemView);
             imgBackground = itemView.findViewById(R.id.imageviewplaylists);
-            txtName = itemView.findViewById(R.id.textviewplaylistname);
+            txtName = itemView.findViewById(R.id.textviewallplaylist);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

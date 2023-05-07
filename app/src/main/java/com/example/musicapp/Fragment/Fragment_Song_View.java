@@ -28,5 +28,6 @@ public class Fragment_Song_View extends Fragment {
     }
 
     public void PlayMusic(String songImage) {
+        Picasso.get().load(songImage).into(imageView);
     }
 }

@@ -70,7 +70,7 @@ public class Fragment_Topic_Category extends Fragment {
                 LinearLayout linearLayout = new LinearLayout(getActivity());
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-                LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(580, 250);
+                LinearLayout.LayoutParams layout = new LinearLayout.LayoutParams(580, 580);
                 layout.setMargins(10, 20, 10, 30);
                 for (int i = 0; i < topicList.size(); ++i) {
                     CardView cardView = new CardView(getActivity());

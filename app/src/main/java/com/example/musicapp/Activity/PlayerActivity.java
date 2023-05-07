@@ -17,14 +17,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.session.MediaSession;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -32,12 +30,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.Settings;
-import android.support.v4.media.session.MediaSessionCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.RemoteViews;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.example.musicapp.Adapter.ViewPagerPlaylist;
@@ -70,6 +66,7 @@ public class PlayerActivity extends AppCompatActivity {
     boolean repeat = false;
     boolean random = false;
     boolean next = false;
+    NotificationCompat.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +160,7 @@ public class PlayerActivity extends AppCompatActivity {
         }, 5000);
     }
 
+    @SuppressLint("RestrictedApi")
     public void play() {
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -170,6 +168,7 @@ public class PlayerActivity extends AppCompatActivity {
         } else {
             mediaPlayer.start();
             imgplay.setImageResource(R.drawable.iconpause);
+//            builder.mActions.get(1).getIconCompat().setTint(R.drawable.iconpause);
         }
     }
     private void eventClick() {
@@ -419,23 +418,17 @@ public class PlayerActivity extends AppCompatActivity {
 
         createNotificationChannel();
 
-        String song = "No song";
-        String singer = "Anonymous";
-        if (songArrayList.size() != 0) {
-            song = songArrayList.get(position).getSongName();
-            singer = songArrayList.get(position).getSinger();
-        }
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
+        builder = new NotificationCompat.Builder(this, "1")
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.spotify_icon_green)
-                .setContentTitle(song)
-                .setContentText(singer)
+                .setContentTitle("MusicApp")
+                .setContentText("MediaPlayer Controller")
                 .setAutoCancel(true)
                 .setOnlyAlertOnce(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .addAction(R.drawable.iconpreview2, "Previous", pPrevious)
-                .addAction(R.drawable.iconpause2, "Pause", pPause)
+                .addAction(R.drawable.playpause, "Pause", pPause)
                 .addAction(R.drawable.iconnext2, "Next", pNext)
                 .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                         .setShowActionsInCompactView(0, 1, 2));
@@ -462,6 +455,7 @@ public class PlayerActivity extends AppCompatActivity {
     }
 
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @SuppressLint("RestrictedApi")
         @Override
         public void onReceive(Context context, Intent intent) {
             switch (intent.getIntExtra("actionMusic", 0)) {
