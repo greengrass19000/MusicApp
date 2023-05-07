@@ -10,7 +10,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/spotify_icon_green"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
@@ -50,14 +50,6 @@
         </activity>
         <receiver android:name=".Activity.NotificationBroadcast"
             android:exported="true">
-            <intent-filter>
-                <action android:name="com.example.musicapp.previous" />
-                <action android:name="com.example.musicapp.delete" />
-                <action android:name="com.example.musicapp.pause" />
-                <action android:name="com.example.musicapp.next" />
-                <action android:name="com.example.musicapp.play" />
-            </intent-filter>
-
         </receiver>
     </application>
 
