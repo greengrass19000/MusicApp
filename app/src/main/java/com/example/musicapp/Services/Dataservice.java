@@ -17,6 +17,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface Dataservice {
+    @FormUrlEncoded
+    @POST("search.php")
+    Call<List<Song>> Search(@Field("tukhoa") String tukhoa);
     @GET("songbanner.php")
     Call<List<Introduction>> GetDataBanner();
 

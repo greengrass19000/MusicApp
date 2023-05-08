@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/search_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:layout_marginBottom="57dp"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:background="#3e3ee2"
+        android:id="@+id/appbatlayoutsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarsearch"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+        </androidx.appcompat.widget.Toolbar>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycleviewsearch"
+            android:layout_below="@+id/toolbarsearch">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/nodatasearch"
+            android:textSize="35sp"
+            android:gravity="center"
+            android:text="Không có dữ liệu bài hát" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+</RelativeLayout>

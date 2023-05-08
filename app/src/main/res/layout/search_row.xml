@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_margin="3dp"
+        android:id="@+id/imageviewsearch"
+        android:scaleType="fitXY"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+    <TextView
+        android:id="@+id/songnamesearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="7dp"
+        android:layout_toRightOf="@id/imageviewsearch"
+        android:ellipsize="end"
+        android:maxWidth="250dp"
+        android:singleLine="true"
+        android:text="Song Name"
+        android:textColor="#ffff"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/singersearch"
+        android:textSize="18sp"
+        android:text="Singer"
+        android:layout_below="@id/songnamesearch"
+        android:layout_toRightOf="@id/imageviewsearch"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="7dp"
+        android:textStyle="bold"
+        android:textColor="#9c9c9c"
+        android:singleLine="true"
+        android:maxWidth="250dp"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/iconlovesearch"
+        android:layout_marginRight="5dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/iconlove" />
+</RelativeLayout>
