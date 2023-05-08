@@ -40,12 +40,9 @@ public class Fragment_Album_Hot extends Fragment {
         view = inflater.inflate(R.layout.fragment_album_hot, container, false);
         recyclerViewAlbum = view.findViewById(R.id.recyclerviewalbum);
         txtViewMoreAlbum = view.findViewById(R.id.textviewviewmorealbum);
-        txtViewMoreAlbum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AllAlbumActivity.class);
-                startActivity(intent);
-            }
+        txtViewMoreAlbum.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), AllAlbumActivity.class);
+            startActivity(intent);
         });
         GetData();
         return view;

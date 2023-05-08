@@ -41,6 +41,7 @@ public class AllAlbumAdapter extends RecyclerView.Adapter<AllAlbumAdapter.ViewHo
         Picasso.get().load(album.getImage()).into(holder.imgAllAlbum);
         holder.txtAllAlbumName.setText(album.getName());
         holder.txtAllAlbumSinger.setText(album.getSinger());
+
     }
 
     @Override

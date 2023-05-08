@@ -42,7 +42,7 @@ public interface Dataservice {
 
     @FormUrlEncoded
     @POST("playlist.php")
-    Call<List<Song>> GetCategory(@Field("idcatergory") int idcatergory);
+    Call<List<Song>> GetCategory(@Field("idcategory") int idcategory);
 
     @FormUrlEncoded
     @POST("categoriesbytopic.php")

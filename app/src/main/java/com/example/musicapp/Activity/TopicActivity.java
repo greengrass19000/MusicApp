@@ -40,12 +40,7 @@ public class TopicActivity extends AppCompatActivity {
         setSupportActionBar(toolbarAllCategories);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Tất cả các chủ đề");
-        toolbarAllCategories.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 finish();
-            }
-        });
+        toolbarAllCategories.setNavigationOnClickListener(view -> finish());
     }
 
     private void GetData() {
@@ -55,7 +50,6 @@ public class TopicActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 ArrayList<Topic> topics = (ArrayList<Topic>) response.body();
-//                Log.d("ALLTOPICS", topics.get(0).getName());
                 topicAdapter = new TopicAdapter(TopicActivity.this, topics);
                 recyclerViewAllCategories.setLayoutManager(new GridLayoutManager(TopicActivity.this, 1));
                 recyclerViewAllCategories.setAdapter(topicAdapter);

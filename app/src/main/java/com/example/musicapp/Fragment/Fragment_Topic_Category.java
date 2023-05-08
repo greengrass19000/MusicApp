@@ -42,12 +42,9 @@ public class Fragment_Topic_Category extends Fragment {
         view = inflater.inflate(R.layout.fragment_topic_category, container, false);
         horizontalScrollView = view.findViewById(R.id.horizontalscrollview);
         txtViewMore = view.findViewById(R.id.textviewviewmoretopiccategory);
-        txtViewMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TopicActivity.class);
-                startActivity(intent);
-            }
+        txtViewMore.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), TopicActivity.class);
+            startActivity(intent);
         });
         GetData();
         return view;
@@ -61,10 +58,10 @@ public class Fragment_Topic_Category extends Fragment {
             public void onResponse(Call<TopicCategoryToday> call, Response<TopicCategoryToday> response) {
                 TopicCategoryToday topicCategoryToday = response.body();
 
-                final ArrayList<Topic> topicList = new ArrayList<>();
+                ArrayList<Topic> topicList = new ArrayList<>();
                 topicList.addAll(topicCategoryToday.getTopic());
 
-                final ArrayList<Category> categoryList = new ArrayList<>();
+                 ArrayList<Category> categoryList = new ArrayList<>();
                 categoryList.addAll(topicCategoryToday.getCategory());
 
                 LinearLayout linearLayout = new LinearLayout(getActivity());
@@ -97,13 +94,10 @@ public class Fragment_Topic_Category extends Fragment {
                     linearLayout.addView(cardView);
 
                     final int finalI = i;
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), SonglistActivity.class);
-                            intent.putExtra("categoryId", categoryList.get(finalI));
-                            startActivity(intent);
-                        }
+                    imageView.setOnClickListener(view -> {
+                        Intent intent = new Intent(getActivity(), SonglistActivity.class);
+                        intent.putExtra("categoryId", categoryList.get(finalI));
+                        startActivity(intent);
                     });
                 }
                 horizontalScrollView.addView(linearLayout);
