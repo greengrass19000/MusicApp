@@ -2,16 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<ImageView
-    android:scaleType="fitXY"
-    android:id="@+id/imageviewbackgroundbanner"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:contentDescription="TODO" />
 <View
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@drawable/activity_gradient" />
+    <ImageView
+        android:scaleType="fitXY"
+        android:id="@+id/imageviewbackgroundbanner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="TODO" />
     <RelativeLayout
         android:id="@+id/relative1"
         android:layout_alignBottom="@id/imageviewbackgroundbanner"
