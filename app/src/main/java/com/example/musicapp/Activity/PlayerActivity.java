@@ -12,11 +12,13 @@ import androidx.viewpager.widget.ViewPager;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -231,6 +233,61 @@ public class PlayerActivity extends AppCompatActivity {
         });
         imgnext.setOnClickListener(view -> next());
         imgpre.setOnClickListener(view -> previous());
+
+        imgsleeptimer.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            Handler handler1 = new Handler();
+            builder.setTitle("Set timer")
+                    .setItems(R.array.duration, (DialogInterface.OnClickListener) (dialog, which) -> {
+                        switch (which){
+                            case 1:
+                                handler1.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if(songArrayList.size() > 0 && mediaPlayer.isPlaying()){
+                                            mediaPlayer.pause();
+                                            imgplay.setImageResource(R.drawable.iconplay);
+                                        }
+                                    }
+                                }, 30000);
+                                break;
+                            case 2:
+                                handler1.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if(songArrayList.size() > 0 && mediaPlayer.isPlaying()){
+                                            mediaPlayer.pause();
+                                            imgplay.setImageResource(R.drawable.iconplay);
+                                        }
+                                    }
+                                }, 60000);
+                                break;
+                            case 3:
+                                handler1.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if(songArrayList.size() > 0 && mediaPlayer.isPlaying()){
+                                            mediaPlayer.pause();
+                                            imgplay.setImageResource(R.drawable.iconplay);
+                                        }
+                                    }
+                                }, 90000);
+                                break;
+                            default:
+                                handler1.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if(songArrayList.size() > 0 && mediaPlayer.isPlaying()){
+                                            mediaPlayer.pause();
+                                            imgplay.setImageResource(R.drawable.iconplay);
+                                        }
+                                    }
+                                }, 3000);
+                                break;
+                        }
+                    });
+            builder.create().show();
+        });
     }
     private ActivityResultLauncher<String> requestPermissionLauncherNotification = registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
         if (isGranted) {
@@ -473,4 +530,5 @@ public class PlayerActivity extends AppCompatActivity {
             }
         }
     };
+
 }
