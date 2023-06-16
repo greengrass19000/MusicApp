@@ -57,6 +57,9 @@ public interface Dataservice {
     @GET("favouritesong.php")
     Call<List<Song>> GetFavouriteSong();
 
+    @GET("customplaylist.php")
+    Call<List<Playlist>> GetCustomPlaylists();
+
     @GET("allalbum.php")
     Call<List<Album>> GetAllAlbum();
 

@@ -6,8 +6,8 @@ android:layout_height="wrap_content"
 android:id="@+id/linearlayout"
 android:orientation="vertical">
     <fragment
-        android:id="@+id/fragmentplaylistlibrary"
-        android:name="com.example.musicapp.Fragment.Fragment_playlistlibrary"
+        android:id="@+id/fragmentcustomplaylist"
+        android:name="com.example.musicapp.Fragment.Fragment_CustomPlaylist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
