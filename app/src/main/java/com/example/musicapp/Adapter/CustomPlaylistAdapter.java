@@ -25,6 +25,10 @@ public class CustomPlaylistAdapter extends RecyclerView.Adapter<CustomPlaylistAd
         this.playlists = playlists;
     }
 
+    public void setPlaylists(ArrayList<Playlist> playlists) {
+        this.playlists = playlists;
+    }
+
     @NonNull
     @Override
     public CustomPlaylistAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -70,4 +70,8 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("updatelikerate.php")
     Call<String> UpdateLikerate(@Field("likerate") String likerate, @Field("song_id") int song_id);
+
+    @FormUrlEncoded
+    @POST("createplaylist.php")
+    Call<String> CreatePlaylist(@Field("name") String name);
 }
